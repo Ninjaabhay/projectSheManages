@@ -106,7 +106,7 @@ const HeroSection = () => {
             Become a part of a growing community of women in Entrepreneurship. Sign up today
             to start your journey!
           </p>
-          <a href="/signup">
+          <a href="https://projectshemanages.vercel.app/signup">
             <button className="btn bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition duration-200">
               Sign Up
             </button>
