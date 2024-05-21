@@ -16,7 +16,7 @@ const IdeaPage = () => {
   useEffect(() => {
     const fetchIdeas = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/ideas");
+        const response = await axios.get("https://shemanages.vercel.app/api/ideas");
         setIdeas(response.data);
       } catch (error) {
         toast.error("Error fetching ideas");
