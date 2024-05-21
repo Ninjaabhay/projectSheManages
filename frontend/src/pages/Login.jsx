@@ -102,7 +102,7 @@ function Login() {
             </p>
             <p className="text-center mt-4">
               <a
-                href="mailto:developerkushalb@gmail.com?subject=Forgot Password for TECHIFY&body=Hey! Please help me out ASAP."
+                href="mailto:tiwariabhay6260@gmail.com?subject=Forgot Password for SheManages&body=Hey! Please help me out ASAP I forgot my password."
                 className="text-pink-600"
               >
                 Forgot Password?
