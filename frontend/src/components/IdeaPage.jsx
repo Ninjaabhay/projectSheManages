@@ -34,7 +34,7 @@ const IdeaPage = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/ideas/submit",
+        "https://shemanages.vercel.app/api/ideas/submit",
         {
           name: form.name,
           email: form.email,
