@@ -20,7 +20,7 @@ function Login() {
       password: data.password,
     };
     await axios
-      .post("http://localhost:8080/user/login", userInfo)
+      .post("https://shemanages.vercel.app//user/login", userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {
