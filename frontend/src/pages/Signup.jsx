@@ -24,7 +24,7 @@ function Signup() {
       phonenumber: data.phonenumber,
     };
     await axios
-      .post("https://shemanages.vercel.app/user/signup", userInfo)
+      .post("https://shemanages.onrender.com/user/signup", userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {
