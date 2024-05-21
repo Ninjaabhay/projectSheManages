@@ -7,7 +7,14 @@ const productRoutes = require("./routes/productRoutes");
 const app = express();
 const ideaRoutes = require("./routes/ideaRoutes");
 
-app.use(cors());
+app.use(cors(
+  {
+    origin:,
+    methods:["POST","GET"],
+    credentials:true 
+  }
+  
+));
 dotenv.config();
 app.use(express.json());
 
