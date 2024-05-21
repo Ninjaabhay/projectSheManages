@@ -16,7 +16,7 @@ const IdeaPage = () => {
   useEffect(() => {
     const fetchIdeas = async () => {
       try {
-        const response = await axios.get("https://shemanages.vercel.app/api/ideas");
+        const response = await axios.get("https://shemanages.onrender.com/api/ideas");
         setIdeas(response.data);
       } catch (error) {
         toast.error("Error fetching ideas");
@@ -34,7 +34,7 @@ const IdeaPage = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://shemanages.vercel.app/api/ideas/submit",
+        "https://shemanages.onrender.com/api/ideas/submit",
         {
           name: form.name,
           email: form.email,
