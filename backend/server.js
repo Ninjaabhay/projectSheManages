@@ -9,7 +9,7 @@ const ideaRoutes = require("./routes/ideaRoutes");
 
 app.use(cors(
   {
-    origin:,
+    origin:["https://projectshemanages.vercel.app/"],
     methods:["POST","GET"],
     credentials:true 
   }
