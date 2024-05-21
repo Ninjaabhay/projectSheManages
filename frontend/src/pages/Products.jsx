@@ -11,7 +11,7 @@ const Products = () => {
   const getProducts = async () => {
     try {
       const data = await axios.get(
-        "https://shemanages.vercel.app/products/getProducts"
+        "https://shemanages.onrender.com/products/getProducts"
       );
       setall_product(data.data);
       console.log("jkd ");
