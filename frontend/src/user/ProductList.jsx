@@ -19,7 +19,7 @@ const ProductList = ({ userId }) => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/products/user/${userId}`
+          `https://shemanages.onrender.com/products/user/${userId}`
         );
         setProducts(response.data);
         toast.success("Products fetched successfully...");
