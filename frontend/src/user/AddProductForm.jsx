@@ -21,7 +21,7 @@ const AddProductForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8080/products/add", {
+      const response = await axios.post("https://shemanages.onrender.com/products/add", {
         userId,
         name,
         username,
