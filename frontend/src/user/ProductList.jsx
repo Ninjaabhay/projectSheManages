@@ -374,7 +374,7 @@ const ProductList = ({ userId, del }) => {
                     {item.name}
                   </h2>
                   <p className="mb-2 text-slate-800 font-semibold">
-                    ${item.price}
+                    ₹ {item.price}
                   </p>
                 </div>
                 {checkdelete === "true" && (
