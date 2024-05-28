@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import ReactWhatsapp from "react-whatsapp";
 import { useAuth } from "../context/AuthProvider";
+import { baseUrl } from "../urls";
 
 const ProductList = ({ userId, del }) => {
   const checkdelete = del.del;
@@ -38,7 +39,7 @@ const ProductList = ({ userId, del }) => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `https://womenempower-1.onrender.com/products/user/${userId}`
+          `${baseUrl}/products/user/${userId}`
         );
         setProducts(response.data);
         toast.success("Products fetched successfully...");
@@ -51,7 +52,7 @@ const ProductList = ({ userId, del }) => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(
-          `https://womenempower-1.onrender.com/user/getClickedUserdata/${userId}`
+          `${baseUrl}/user/getClickedUserdata/${userId}`
         );
         setUserData(response.data);
         setEditFormData({
@@ -78,7 +79,7 @@ const ProductList = ({ userId, del }) => {
   const handleDelete = async (productId) => {
     try {
       const res = await axios.delete(
-        `https://womenempower-1.onrender.com/products/delete/${productId}`
+        `${baseUrl}/products/delete/${productId}`
       );
       if (res.status === 200) {
         toast.success("Product deleted successfully...");
@@ -103,7 +104,7 @@ const ProductList = ({ userId, del }) => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `https://womenempower-1.onrender.com/user/updateProfile/${userId}`,
+        `${baseUrl}/user/updateProfile/${userId}`,
         editFormData
       );
       if (res.status === 200) {
