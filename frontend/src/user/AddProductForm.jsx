@@ -3,6 +3,7 @@ import axios from "axios";
 import { useAuth } from "../context/AuthProvider";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../urls";
 
 const AddProductForm = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const AddProductForm = () => {
 
     try {
       const response = await axios.post(
-        "https://womenempower-1.onrender.com/products/add",
+        `${baseUrl}/products/add`,
         {
           userId,
           name,

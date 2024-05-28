@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MdDeleteSweep } from "react-icons/md";
 import toast, { Toaster } from "react-hot-toast";
+import { baseUrl } from "../urls";
 import { IoMdArrowDropdownCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
 import {
@@ -38,7 +39,7 @@ const ProductList = ({ userId, del }) => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          `https://womenempower-1.onrender.com/products/user/${userId}`
+          `${baseUrl}/products/user/${userId}`
         );
         setProducts(response.data);
         toast.success("Products fetched successfully...");
@@ -51,7 +52,7 @@ const ProductList = ({ userId, del }) => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get(
-          `https://womenempower-1.onrender.com/user/getClickedUserdata/${userId}`
+          `${baseUrl}/user/getClickedUserdata/${userId}`
         );
         setUserData(response.data);
         setEditFormData({
@@ -78,7 +79,7 @@ const ProductList = ({ userId, del }) => {
   const handleDelete = async (productId) => {
     try {
       const res = await axios.delete(
-        `https://womenempower-1.onrender.com/products/delete/${productId}`
+        `${baseUrl}/products/delete/${productId}`
       );
       if (res.status === 200) {
         toast.success("Product deleted successfully...");
@@ -103,7 +104,7 @@ const ProductList = ({ userId, del }) => {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `https://womenempower-1.onrender.com/user/updateProfile/${userId}`,
+        `${baseUrl}/user/updateProfile/${userId}`,
         editFormData
       );
       if (res.status === 200) {
@@ -374,7 +375,7 @@ const ProductList = ({ userId, del }) => {
                     {item.name}
                   </h2>
                   <p className="mb-2 text-slate-800 font-semibold">
-                    ${item.price}
+                  ₹{item.price}
                   </p>
                 </div>
                 {checkdelete === "true" && (

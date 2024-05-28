@@ -8,11 +8,11 @@ const BuildFlexSection = () => {
     >
       <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold mt-12 mb-8">
-        Built for #MinorProject2 ECE '2025.        </h1>
+        Built for #MinorProject2 ECE Batch '2025.        </h1>
         <p>
           <a
             href="https://github.com/Ninjaabhay/projectSheManages"
-            className="text-orange-500"
+            taraget="_blank" className="text-orange-500"
           >
             More information <span className="text-pink-600">here</span>.
           </a>
