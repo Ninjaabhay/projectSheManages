@@ -106,11 +106,11 @@ const HeroSection = () => {
               Become a part of a growing community of women in entrepreneurship. Sign up
               today to start your journey!
             </p>
-            <link to="/signup">
+            <a href="#signup">
               <button className="btn bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition duration-200">
                 Sign Up
               </button>
-            </link>
+            </a>
           </div>
         </div>
       )}
