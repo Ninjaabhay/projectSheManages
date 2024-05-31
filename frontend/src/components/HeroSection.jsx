@@ -110,7 +110,7 @@ const HeroSection = () => {
               <button className="btn bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition duration-200">
                 Sign Up
               </button>
-            <link/>
+            </link>
           </div>
         </div>
       )}
