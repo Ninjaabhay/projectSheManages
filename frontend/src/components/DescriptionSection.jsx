@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { GrResources } from "react-icons/gr";
 import { FcIdea } from "react-icons/fc";
 import { FaOpencart } from "react-icons/fa6";
@@ -47,11 +48,11 @@ const DescriptionSection = () => {
                 including tutorials, webinars, and articles to enhance your
                 skills and knowledge.
               </p>
-              <a href="resources.html">
+              <Link to="/resources">
                 <button className="btn bg-pink-500 text-white px-6 py-1 rounded-lg hover:bg-pink-700 transition duration-200 text-base">
                   Learn more
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="card bg-white p-1 rounded-lg shadow-md hover:shadow-lg transition duration-200">
@@ -66,11 +67,11 @@ const DescriptionSection = () => {
                 around the world, supporting their economic growth and
                 entrepreneurship.
               </p>
-              <a href="#">
+              <Link to="/products">
                 <button className="btn bg-pink-500 text-white px-6 py-1 rounded-lg hover:bg-pink-700 transition duration-200 text-base">
                   Learn more
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="card bg-white p-1 rounded-lg shadow-md hover:shadow-lg transition duration-200">
@@ -85,11 +86,11 @@ const DescriptionSection = () => {
                 like-minded women, driving forward technological advancements
                 and creative solutions.
               </p>
-              <a href="#">
+              <Link to="/ideas">
                 <button className="btn bg-pink-500 text-white px-6 py-1 rounded-lg hover:bg-pink-700 transition duration-200 text-base">
                   Learn more
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
