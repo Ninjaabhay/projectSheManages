@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import HeroImage from "../images/Hero Image.gif";
 import HeroWave from "../images/wave (10).svg";
 import { useAuth } from "../context/AuthProvider";
