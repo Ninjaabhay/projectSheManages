@@ -63,7 +63,7 @@ function Signup() {
                 Username
               </label>
               <input
-                placeholder="JohnWick"
+                placeholder="your Name"
                 type="text"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg"
                 id="username"
@@ -117,7 +117,7 @@ function Signup() {
                 Phone Number
               </label>
               <input
-                placeholder="at least 8 characters"
+                placeholder="Your Phone "
                 type="number"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg"
                 id="number"
