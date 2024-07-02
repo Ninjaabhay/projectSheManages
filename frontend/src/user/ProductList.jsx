@@ -76,22 +76,42 @@ const ProductList = ({ userId, del }) => {
     fetchUserData();
   }, [userId]);
 
-  const handleDelete = async (productId) => {
-    try {
-      const res = await axios.delete(
-        `${baseUrl}/products/delete/${productId}`
-      );
-      if (res.status === 200) {
-        toast.success("Product deleted successfully...");
-        setProducts(products.filter((product) => product._id !== productId));
+const handleDelete = async (productId) => {
+  try {
+    const { status } = await axios.delete(`${baseUrl}/products/delete/${productId}`);
+
+    if (status === 200) {
+      toast.success("Product deleted successfully...");
+      setProducts((prevProducts) => prevProducts.filter((product) => product._id !== productId));
+    } else {
+      toast.error("Error deleting product");
+    }
+  } catch (error) {
+    if (error.response) {
+      // The request was made and the server responded with a status code
+      // that falls out of the range of 2xx
+      console.error("Server responded with an error:", error.response.status, error.response.data);
+      if (error.response.status === 404) {
+        toast.error("Product not found");
+      } else if (error.response.status === 400) {
+        toast.error("Invalid product ID");
+      } else if (error.response.status === 403) {
+        toast.error("Unauthorized action");
       } else {
         toast.error("Error deleting product");
       }
-    } catch (error) {
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error("No response received:", error.request);
+      toast.error("Network error, please try again");
+    } else {
+      // Something happened in setting up the request that triggered an Error
+      console.error("Error setting up request:", error.message);
       toast.error("Error deleting product");
-      console.error("Error deleting product:", error);
     }
-  };
+  }
+};
+
 
   const handleEditChange = (e) => {
     setEditFormData({
