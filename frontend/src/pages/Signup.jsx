@@ -118,7 +118,7 @@ function Signup() {
               </label>
               <input
                 placeholder="Your Phone "
-                type="number"
+                type="tel"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg"
                 id="number"
                 {...register("phonenumber", { required: true })}
