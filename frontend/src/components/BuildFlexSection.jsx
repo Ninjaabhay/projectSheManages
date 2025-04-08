@@ -8,7 +8,7 @@ const BuildFlexSection = () => {
     >
       <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold mt-12 mb-8">
-        Built for #MinorProject2 ECE Batch '2025.        </h1>
+        Made for Internal Hackathon '2025 with ❤️.        </h1>
         <p>
           <a
             href="https://github.com/Ninjaabhay/projectSheManages"
