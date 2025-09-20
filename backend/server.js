@@ -10,7 +10,7 @@ const ideaRoutes = require("./routes/ideaRoutes");
 app.use(
   cors({
     origin: ["https://projectshemanages.vercel.app", "http://localhost:5173"],
-    // methods: ["POST", "GET", "PUT", "DELETE"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
 );
@@ -36,3 +36,5 @@ app.use("/products", productRoutes);
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
+
+// http://localhost:8080/api/ideas/
