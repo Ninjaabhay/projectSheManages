@@ -4,30 +4,29 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../urls";
 
+import useFetchData from "../hooks/useFetchData"; // ✅ reusable hook
+import Loader from "../components/Loader"; // ✅ loader component
+
 const IdeaPage = () => {
   const navigate = useNavigate();
+
+  // ✅ Fetch ideas initially with custom hook
+  const { data, loading, error } = useFetchData(`${baseUrl}/api/ideas`);
+
+  // ✅ Local state to allow instant UI updates
   const [ideas, setIdeas] = useState([]);
+
+  // Sync fetched data into local state whenever it changes
+  useEffect(() => {
+    setIdeas(data);
+  }, [data]);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
     title: "",
     description: "",
   });
-
-  useEffect(() => {
-    const fetchIdeas = async () => {
-      try {
-        const response = await axios.get(
-          `${baseUrl}/api/ideas`
-        );
-        setIdeas(response.data);
-      } catch (error) {
-        toast.error("Error fetching ideas");
-      }
-    };
-
-    fetchIdeas();
-  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -36,28 +35,51 @@ const IdeaPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `${baseUrl}/api/ideas/submit`,
-        {
-          name: form.name,
-          email: form.email,
-          title: form.title,
-          description: form.description,
-        }
-      );
+      const response = await axios.post(`${baseUrl}/api/ideas/submit`, {
+        name: form.name,
+        email: form.email,
+        title: form.title,
+        description: form.description,
+      });
+
+      // ✅ Append new idea instantly to local state
       setIdeas([...ideas, response.data.newIdea]);
+
       toast.success("Idea submitted successfully");
+
+      // Reset form
       setForm({
         name: "",
         email: "",
         title: "",
         description: "",
       });
-      navigate("/ideas");
+
+      // Stay on the same page (no need to navigate/reload)
     } catch (error) {
       toast.error("Error submitting idea");
     }
   };
+
+  // ✅ Loader while waiting for Render backend
+  if (loading) {
+    return <Loader message="Waking up the server, please wait..." />;
+  }
+
+  // ✅ Error fallback
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center h-64 text-red-500">
+        <p>⚠️ Failed to load ideas: {error}</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div

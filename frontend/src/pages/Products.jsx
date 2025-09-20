@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Item from "../components/Item";
 import { IoMdArrowDropdownCircle } from "react-icons/io";
-import { AiOutlineSearch } from "react-icons/ai"; // Import search icon
-import axios from "axios";
+import { AiOutlineSearch } from "react-icons/ai";
 import { baseUrl } from "../urls";
-
+import useFetchData from "../hooks/useFetchData"; // ✅ new hook
+import Loader from "../components/Loader"; // ✅ reusable loader
 
 const Products = () => {
-  const [allProducts, setAllProducts] = useState([]);
+  const {
+    data: allProducts,
+    loading,
+    error,
+  } = useFetchData(`${baseUrl}/products/getProducts`);
+
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -29,29 +34,16 @@ const Products = () => {
     "other",
   ];
 
-  const getProducts = async () => {
-    try {
-      const response = await axios.get(
-        `${baseUrl}/products/getProducts`
-      );
-      setAllProducts(response.data);
-      setFilteredProducts(response.data);
-    } catch (error) {
-      console.log(error);
+  useEffect(() => {
+    if (allProducts.length > 0) {
+      filterProducts();
     }
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
-
-  useEffect(() => {
-    filterProducts();
-    setCurrentPage(1); // Reset to the first page when filters change
   }, [searchQuery, selectedCategories, priceRange, allProducts]);
 
   useEffect(() => {
-    filterProducts();
+    if (allProducts.length > 0) {
+      filterProducts();
+    }
   }, [currentPage]);
 
   const filterProducts = () => {
@@ -89,6 +81,24 @@ const Products = () => {
     (currentPage - 1) * productsPerPage,
     currentPage * productsPerPage
   );
+
+  // ✅ Loader UI
+  if (loading) return <Loader message="Waking up the server, please wait..." />;
+
+  // ✅ Error UI
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center h-64 text-red-500">
+        <p>⚠️ Failed to load products: {error}</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div
