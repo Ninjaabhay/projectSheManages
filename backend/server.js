@@ -7,13 +7,13 @@ const productRoutes = require("./routes/productRoutes");
 const app = express();
 const ideaRoutes = require("./routes/ideaRoutes");
 
-app.use(cors(
-  {
-    origin:["https://projectshemanages.vercel.app"],
-    methods:["POST","GET","PUT"],
-    credentials:true 
-  }
-));
+app.use(
+  cors({
+    origin: ["https://projectshemanages.vercel.app", "http://localhost:5173"],
+    // methods: ["POST", "GET", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 dotenv.config();
 app.use(express.json());
