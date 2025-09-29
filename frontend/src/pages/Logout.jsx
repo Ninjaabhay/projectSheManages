@@ -2,18 +2,22 @@ import React from "react";
 import toast from "react-hot-toast";
 import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
+import { baseUrl } from "../urls";
 const Logout = () => {
   const navigate = useNavigate();
   const [authUser, setAuthUser] = useAuth();
-  const handleLogout = () => {
+
+
+  const handleLogout = async () => {
     try {
-      setAuthUser({
-        ...authUser,
-        user: null,
-      });
+
+      await axios.post(`${baseUrl}/user/logout`, {}, { withCredentials: true });
+      setAuthUser({ ...authUser, user: null });
       localStorage.removeItem("Users");
-      toast.success("Logoout Successfully..");
+      localStorage.removeItem("token");
+
+      toast.success("Logout Successfully..");
       navigate("/");
       window.location.reload();
     } catch (error) {
@@ -21,6 +25,9 @@ const Logout = () => {
       toast.error("Error: " + error.message);
     }
   };
+
+
+
   return (
     <div>
       <button
