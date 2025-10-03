@@ -1,47 +1,50 @@
-const User = require("../models/userModel");
+const User = require("../models/user.model");
 const bcryptjs = require("bcryptjs");
 
 const signup = async (req, res) => {
+  // Since we are using Clerk's authentication
+  // We are only going to get email from it and then get the remaining details later
+  // We will only be receiving email from body
+  // Username initially will be the preceding words before @ in the email
   try {
-    const { username, email, password, bio, profile, phonenumber } = req.body;
-    console.log(req.body);
+    const { email, profilePic } = req.body;
     const user = await User.findOne({ email });
-    const usernamecheck = await User.findOne({ username });
-    if (usernamecheck) {
-      return res.status(400).json({
-        message: "Username already exist",
-      });
-    }
+    // TODO: Put username check in a different function
+    // Checking is user is present
     if (user) {
-      return res.status(400).json({
+      return res.status(200).json({
         message: "User already exist",
+        exists: true,
+        // Sending userId, so we can transfer the user to profile page if the account already exists.
+        userId: user._id,
       });
     }
-    const hashPassword = await bcryptjs.hash(password, 10);
+
+    // Create a user
     const createUser = new User({
-      username: username,
+      username: email?.split("@")[0] || email,
       email: email,
-      password: hashPassword,
-      bio: bio,
-      profile: profile,
-      phonenumber: phonenumber,
+      profile:
+        profilePic ||
+        "https://getdrawings.com/free-icon/woman-profile-icon-68.png",
     });
+
+    // User gets saved
     await createUser.save();
+
+    // On successful creation, only return id, username and email.
     res.status(201).json({
       message: "User created successfully",
       user: {
-        _id: createUser._id,
+        userId: createUser._id,
         username: createUser.username,
         email: createUser.email,
-        bio: createUser.bio,
-        profile: createUser.profile,
-        phonenumber: createUser.phonenumber,
       },
     });
   } catch (error) {
     console.log("ERROR: " + error.message);
     res.status(500).json({
-      message: "Internal Server Error",
+      message: `Internal Server Error: ${error.message}`,
     });
   }
 };
@@ -98,7 +101,6 @@ const updateUserController = async (req, res) => {
   const {
     username,
     bio,
-    email,
     phonenumber,
     linkedin,
     github,
@@ -112,7 +114,6 @@ const updateUserController = async (req, res) => {
       {
         username,
         bio,
-        email,
         phonenumber,
         linkedin,
         github,
@@ -133,9 +134,39 @@ const updateUserController = async (req, res) => {
   }
 };
 
+const getUserDataByEmail = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+
+    if (user) {
+      res.status(200).json({
+        exists: true,
+        user: {
+          userId: user._id,
+          username: user.username,
+          profile: user.profile,
+          email: user.email,
+        },
+      });
+    } else {
+      res.status(200).json({
+        exists: false
+      })
+    }
+
+  } catch (error) {
+    console.log("ERROR: " + error.message);
+    res.status(500).json({
+      message: "Internal server error",
+    });
+  }
+}
+
 module.exports = {
   signup,
   login,
   getUserDataController,
   updateUserController,
+  getUserDataByEmail
 };

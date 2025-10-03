@@ -46,6 +46,14 @@ Check out the live demo of the project https://projectshemanages.vercel.app/
      MongoDBURI=your_mongodb_uri
      ```
 
+   - Create a `.env` file in the `frontend` directory.
+   - Add the following: 
+   ```sh
+   VITE_CLERK_PUBLISHABLE_KEY=your_publishable_key
+   ```
+   - You can get the key once you sign up to the Clerk Dashboard.
+   - In the Dashboard > User and Authentication > User Modal - Disable the First and Last Name Field.
+
 ## Usage
 
 1. Start the backend server:

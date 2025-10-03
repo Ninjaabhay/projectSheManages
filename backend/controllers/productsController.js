@@ -1,5 +1,5 @@
 // controllers/productsController.js
-const Product = require("../models/productModel");
+const Product = require("../models/product.model");
 
 exports.addProduct = async (req, res) => {
   const { userId, username, profile, name, category, price, imageUrl } =
@@ -19,6 +19,7 @@ exports.addProduct = async (req, res) => {
     await product.save();
     res.status(201).json({ message: "Product added successfully!" });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "Failed to add product" });
   }
 };

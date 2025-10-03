@@ -14,15 +14,15 @@ const HeroSection = () => {
         <div className=" mx-auto ">
           <div className="flex sm:flex-row flex-col items-center justify-center py-12 p-2  w-full max-h-fit bg-gray-50">
             <div className="hero-intro sm:w-1/2 w-full sm:h-full sm:p-6 h-1/2">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-orange-500 mb-4 ">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-heading mb-4 ">
                 Empowering women across communities to get started
                 <span className="text-pink-600">.</span>
               </h1>
-              <p className="text-lg text-slate-800 mb-6">
+              <p className="text-lg text-primary mb-6">
                 We see you, we hear you, and we empower you!
               </p>
               <a href="/">
-                <button className="sm:h-14 h-12 min-h-8 btn-lg bg-pink-600 text-white px-6 sm:text-base text-sm rounded-lg hover:bg-pink-700 transition duration-200">
+                <button className="sm:h-14 h-12 min-h-8 btn-lg bg-heading text-white px-6 sm:text-base text-sm rounded-lg hover:bg-pink-700 transition duration-200">
                   Learn More
                 </button>
               </a>
@@ -51,7 +51,7 @@ const HeroSection = () => {
             />
           </div>
           <div className="text-section">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4 ">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-4 ">
               Bridging the Gender Gap in Technology
             </h2>
             <p className="text-lg text-gray-600 mb-6">
@@ -60,7 +60,7 @@ const HeroSection = () => {
               to help them achieve their goals.
             </p>
             <a href="#learn-more-1">
-              <button className="btn bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+              <button className="btn bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition duration-200">
                 Learn More
               </button>
             </a>
@@ -77,7 +77,7 @@ const HeroSection = () => {
             />
           </div>
           <div className="text-section">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-4">
               Building a Supportive Network
             </h2>
             <p className="text-lg text-gray-600 mb-6">
@@ -86,7 +86,7 @@ const HeroSection = () => {
               innovation.
             </p>
             <a href="#learn-more-2">
-              <button className="btn bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-200">
+              <button className="btn bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition duration-200">
                 Learn More
               </button>
             </a>
@@ -100,7 +100,7 @@ const HeroSection = () => {
       ) : (
         <div className="bg-gray-100 py-12">
           <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-heading mb-4">
               Join Our Community
             </h2>
             <p className="text-lg text-gray-600 mb-6">
@@ -108,7 +108,7 @@ const HeroSection = () => {
               today to start your journey!
             </p>
             <Link to="/signup">
-              <button className="btn bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition duration-200">
+              <button className="btn bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition duration-200">
                 Sign Up
               </button>
             </Link>

@@ -7,10 +7,16 @@ import { baseUrl } from "../urls";
 
 const AddProductForm = () => {
   const navigate = useNavigate();
-  const [authUser, setAuthUser] = useAuth();
-  const userId = authUser._id;
-  const username = authUser.username;
-  const profile = authUser.profile;
+
+  // Instead of using useAuth, we are directly getting the user from local storage.
+  // Get user from localStorage
+  const storedUser = localStorage.getItem("user");
+  const authUser = storedUser ? JSON.parse(storedUser) : null;
+
+  // Extract properties safely
+  const userId = authUser?.userId || null;
+  const username = authUser?.username || "";
+  const profile = authUser?.profile || "";
 
   const [name, setName] = useState("");
   const [category, setCategory] = useState("clothes");
@@ -21,18 +27,15 @@ const AddProductForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        `${baseUrl}/products/add`,
-        {
-          userId,
-          name,
-          username,
-          profile,
-          category,
-          price,
-          imageUrl,
-        }
-      );
+      const response = await axios.post(`${baseUrl}/products/add`, {
+        userId,
+        name,
+        username,
+        profile,
+        category,
+        price,
+        imageUrl,
+      });
       toast.success(response.data.message);
       setName("");
       setCategory("clothes");

@@ -21,7 +21,7 @@ const DescriptionSection = () => {
       }}
     >
       <div id="go-here" className="container mx-auto px-4 ">
-        <h1 className="text-4xl font-bold mb-6  text-center">
+        <h1 className="text-4xl font-bold mb-6 text-center">
           One platform for all your goals.
         </h1>
         <p className="text-lg mb-8 text-gray-100 font-normal text-center">
@@ -40,7 +40,7 @@ const DescriptionSection = () => {
                 <i className="fas fa-calendar-check fa-2x"></i>
               </p>
               <GrResources className="w-full text-center text-7xl" />
-              <h5 className="text-xl font-bold mb-2 text-gray-800">
+              <h5 className="text-xl font-bold mb-2 text-heading">
                 Resources
               </h5>
               <p className="card-text mb-4 text-gray-600">
@@ -49,7 +49,7 @@ const DescriptionSection = () => {
                 skills and knowledge.
               </p>
               <Link to="/resources">
-                <button className="btn bg-pink-500 text-white px-6 py-1 rounded-lg hover:bg-pink-700 transition duration-200 text-base">
+                <button className="btn bg-primary text-white px-6 py-1 rounded-lg hover:bg-pink-700 transition duration-200 text-base">
                   Learn more
                 </button>
               </Link>
@@ -61,14 +61,14 @@ const DescriptionSection = () => {
                 <i className="fas fa-shopping-cart fa-2x"></i>
               </p>
               <FaOpencart className="w-full text-center text-7xl" />
-              <h5 className="text-xl font-bold mb-2 text-gray-800">Products</h5>
+              <h5 className="text-xl font-bold mb-2 text-heading">Products</h5>
               <p className="card-text mb-4 text-gray-600">
                 Discover and purchase unique, handmade products created by women
                 around the world, supporting their economic growth and
                 entrepreneurship.
               </p>
               <Link to="/products">
-                <button className="btn bg-pink-500 text-white px-6 py-1 rounded-lg hover:bg-pink-700 transition duration-200 text-base">
+                <button className="btn bg-primary text-white px-6 py-1 rounded-lg hover:bg-pink-700 transition duration-200 text-base">
                   Learn more
                 </button>
               </Link>
@@ -80,14 +80,14 @@ const DescriptionSection = () => {
                 <i className="fas fa-search fa-2x"></i>
               </p>
               <FcIdea className="w-full text-center text-7xl" />
-              <h5 className="text-xl font-bold mb-2 text-gray-800">Ideas</h5>
+              <h5 className="text-xl font-bold mb-2 text-heading">Ideas</h5>
               <p className="card-text mb-4 text-gray-600">
                 Share and collaborate on innovative ideas with a community of
                 like-minded women, driving forward technological advancements
                 and creative solutions.
               </p>
               <Link to="/ideas">
-                <button className="btn bg-pink-500 text-white px-6 py-1 rounded-lg hover:bg-pink-700 transition duration-200 text-base">
+                <button className="btn bg-primary text-white px-6 py-1 rounded-lg hover:bg-pink-700 transition duration-200 text-base">
                   Learn more
                 </button>
               </Link>

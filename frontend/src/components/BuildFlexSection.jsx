@@ -7,14 +7,15 @@ const BuildFlexSection = () => {
       className="bg-gray-100 text-center pb-24 flex items-center justify-center"
     >
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold mt-12 mb-8">
-        Made for Internal Hackathon '2025 with ❤️.        </h1>
-        <p>
+        <h1 className="text-4xl font-bold mt-12 mb-8 text-heading">
+        Made for Internal Hackathon '2025 with ❤️.</h1>
+        <p className="text-subHeading">
+          More information {" "}
           <a
             href="https://github.com/Ninjaabhay/projectSheManages"
-            taraget="_blank" className="text-orange-500"
+            target="_blank" 
           >
-            More information <span className="text-pink-600">here</span>.
+             <span className="text-pink-600">here</span>.
           </a>
         </p>
       </div>
