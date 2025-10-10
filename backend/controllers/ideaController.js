@@ -1,4 +1,4 @@
-const Idea = require("../models/ideaModel");
+const Idea = require("../models/idea.model");
 
 const submitIdea = async (req, res) => {
   const { name, email, title, description } = req.body;

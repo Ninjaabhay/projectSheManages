@@ -203,7 +203,7 @@ const Products = () => {
                 profile={item.profile}
                 _id={item._id}
                 name={item.name}
-                imageUrl={item.imageUrl}
+                imageUrl={`${baseUrl}/uploads/${item.image.filename}`}
                 price={item.price}
                 category={item.category}
               />

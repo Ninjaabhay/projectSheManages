@@ -2,10 +2,11 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const userRoute = require("./routes/user.route");
-const productRoutes = require("./routes/productRoutes");
+const userRoute = require("./routes/user.routes");
+const productRoutes = require("./routes/product.routes");
 const app = express();
-const ideaRoutes = require("./routes/ideaRoutes");
+const ideaRoutes = require("./routes/idea.routes");
+const path = require('path');
 
 app.use(
   cors({
@@ -20,6 +21,9 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 8080;
 const URI = process.env.MongoDBURI;
+
+// Serve files from uploads folder
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // connect to mongoDB
 try {

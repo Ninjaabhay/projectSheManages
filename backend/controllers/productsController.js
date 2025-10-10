@@ -1,9 +1,13 @@
 // controllers/productsController.js
-const Product = require("../models/productModel");
+const Product = require("../models/product.model");
+const removeFile = require("../utils/fileRemover");
+const handleMulterUpload = require("../utils/fileUploader");
 
 exports.addProduct = async (req, res) => {
-  const { userId, username, profile, name, category, price, imageUrl } =
-    req.body;
+  // The first thing we have to do is process the image
+  const file = await handleMulterUpload(req, res, "image"); // Image comes directly from the form data
+
+  const { userId, username, profile, name, category, price } = req.body;
 
   try {
     const product = new Product({
@@ -13,12 +17,21 @@ exports.addProduct = async (req, res) => {
       name,
       category,
       price,
-      imageUrl,
+      image: {
+        filename: file.filename,
+        originalname: file.originalname,
+        path: file.path,
+        mimetype: file.mimetype,
+        size: file.size,
+      },
     });
-
+    // Save to Database
     await product.save();
+
+    // Response
     res.status(201).json({ message: "Product added successfully!" });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "Failed to add product" });
   }
 };
@@ -49,12 +62,12 @@ exports.getProductController = async (req, res) => {
 exports.deleteProductController = async (req, res) => {
   try {
     const { productId } = req.params;
-    // console.log("Deleting product with ID: " + productId);
-    // if (!mongoose.Types.ObjectId.isValid(productId)) {
-    //   return res.status(400).send({ error: "Invalid product ID" });
-    // }
-
     const result = await Product.findByIdAndDelete(productId);
+
+    if (result.image && result.image.path){
+      await removeFile(result.image.path)
+    } 
+
     if (result) {
       res.status(200).send({ message: "Product deleted successfully" });
     } else {
